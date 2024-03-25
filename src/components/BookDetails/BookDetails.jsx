@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useLoaderData, useParams } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { savedReadBook, savedWishlistBook } from "../../utility/localStorage";
 
 const BookDetails = () => {
   const books = useLoaderData();
@@ -14,6 +15,7 @@ const BookDetails = () => {
   //   console.log(book);
 
   const handleReadBook = (readBookList) => {
+    savedReadBook(readBookList.bookId);
     const findBook = readBook.find(
       (book) => book.bookId === readBookList.bookId
     );
@@ -37,6 +39,7 @@ const BookDetails = () => {
         const newReadBook = [...wishBook, wishBookList];
         toast.success("books added to the wishlist");
         setWishBook(newReadBook);
+        savedWishlistBook(wishBookList.bookId);
       } else {
         toast.error("books already added to the read list");
       }
