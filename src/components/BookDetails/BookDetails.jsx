@@ -1,11 +1,47 @@
+import { useState } from "react";
 import { Link, useLoaderData, useParams } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const BookDetails = () => {
   const books = useLoaderData();
   const { bookId } = useParams();
   const bookInt = parseInt(bookId);
   const book = books.find((b) => b.bookId === bookInt);
+
+  const [readBook, setReadBook] = useState([]);
+  const [wishBook, setWishBook] = useState([]);
   //   console.log(book);
+
+  const handleReadBook = (readBookList) => {
+    const findBook = readBook.find(
+      (book) => book.bookId === readBookList.bookId
+    );
+    if (findBook) {
+      toast.error("books already added to the readlist");
+    } else {
+      const newReadBook = [...readBook, readBookList];
+      toast.success("books added to the read list");
+      setReadBook(newReadBook);
+    }
+    console.log(readBook);
+  };
+  const handleWishList = (wishBookList) => {
+    const findBook = wishBook.find(
+      (book) => book.bookId === wishBookList.bookId
+    );
+    if (findBook) {
+      toast.error("books already added to the wishlist");
+    } else {
+      if (readBook.length <= 0) {
+        const newReadBook = [...wishBook, wishBookList];
+        toast.success("books added to the wishlist");
+        setWishBook(newReadBook);
+      } else {
+        toast.error("books already added to the read list");
+      }
+    }
+  };
   const {
     bookName,
     author,
@@ -63,14 +99,25 @@ const BookDetails = () => {
           </span>
         </div>
         <div className="mt-8 flex gap-4">
-          <Link to="/">
-            <button className="btn btn-accent">Read</button>
+          <Link to="">
+            <button
+              onClick={() => handleReadBook(book)}
+              className="btn btn-accent"
+            >
+              Read
+            </button>
           </Link>
-          <Link to="/">
-            <button className="btn btn-primary">Wishlist</button>
+          <Link to="">
+            <button
+              onClick={() => handleWishList(book)}
+              className="btn btn-primary"
+            >
+              Wishlist
+            </button>
           </Link>
         </div>
       </div>
+      <ToastContainer></ToastContainer>
     </div>
   );
 };
