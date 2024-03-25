@@ -59,15 +59,18 @@ const ListedBooks = () => {
           name="my_tabs_2"
           role="tab"
           className="tab"
-          aria-label="Tab 1"
+          aria-label="Read Books"
+          checked
         />
         <div
           role="tabpanel"
           className="tab-content bg-base-100 border-base-300 rounded-box p-6"
         >
-          {readBooks.map((book) => (
-            <ReadBooks key={book.bookId} book={book}></ReadBooks>
-          ))}
+          <div className="flex flex-col gap-6">
+            {readBooks.map((book) => (
+              <ReadBooks key={book.bookId} book={book}></ReadBooks>
+            ))}
+          </div>
         </div>
 
         <input
@@ -75,16 +78,17 @@ const ListedBooks = () => {
           name="my_tabs_2"
           role="tab"
           className="tab"
-          aria-label="Tab 2"
-          checked
+          aria-label="Wishlist Books"
         />
         <div
           role="tabpanel"
           className="tab-content bg-base-100 border-base-300 rounded-box p-6"
         >
-          {wishlistBooks.map((book) => (
-            <WishListBooks key={book.bookId} book={book}></WishListBooks>
-          ))}
+          <div className="flex flex-col gap-5">
+            {wishlistBooks.map((book) => (
+              <WishListBooks key={book.bookId} book={book}></WishListBooks>
+            ))}
+          </div>
         </div>
       </div>
     </div>
