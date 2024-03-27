@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 
 import { useLoaderData } from "react-router-dom";
-import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid } from "recharts";
+import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, ResponsiveContainer } from "recharts";
 import { getStoredReadBook } from "../../utility/localStorage";
 import { useEffect, useState } from "react";
 
@@ -39,7 +39,8 @@ const PagesToRead = () => {
 
   // console.log(readBookList);
   return (
-    <BarChart
+    <ResponsiveContainer className='mx-auto' width='98%' height={540}>
+      <BarChart
       className="mx-auto"
       width={800}
       height={500}
@@ -65,6 +66,7 @@ const PagesToRead = () => {
         ))}
       </Bar>
     </BarChart>
+    </ResponsiveContainer>
   );
 };
 
