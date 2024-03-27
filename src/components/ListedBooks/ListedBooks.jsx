@@ -9,6 +9,7 @@ import ReadBooks from "../ReadBooks/ReadBooks";
 import WishListBooks from "../WishListBooks/WishListBooks";
 const ListedBooks = () => {
   const books = useLoaderData();
+  const [sortName, setSortName] = useState("Sort By");
 
   const [readBooks, setReadBooks] = useState([]);
   const [wishlistBooks, setWishlistBooks] = useState([]);
@@ -27,6 +28,25 @@ const ListedBooks = () => {
       setWishlistBooks(wishBookApplied);
     }
   }, []);
+
+  const handleSortItem = (target) => {
+    console.log(target);
+    if (target === 1) {
+      setSortName("Rating");
+      const result = [...readBooks].sort((a, b) => b.rating - a.rating);
+      setReadBooks(result);
+    } else if (target === 2) {
+      setSortName("Number of Pages");
+      const result = [...readBooks].sort((a, b) => b.totalPages - a.totalPages);
+      setReadBooks(result);
+    } else if (target === 3) {
+      setSortName("Published Year");
+      const result = [...readBooks].sort(
+        (a, b) => b.yearOfPublishing - a.yearOfPublishing
+      );
+      setReadBooks(result);
+    }
+  };
   return (
     <div>
       <h2 className="text-[28px] bg-[#1313130D] p-8 text-center">Books</h2>
@@ -36,7 +56,7 @@ const ListedBooks = () => {
           role="button"
           className="btn m-1 bg-[#23BE0A] text-white"
         >
-          Sort By
+          <span>{sortName && sortName}</span>
           <span>
             <IoIosArrowDown />
           </span>
@@ -45,11 +65,14 @@ const ListedBooks = () => {
           tabIndex={0}
           className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
         >
-          <li>
-            <a>Item 1</a>
+          <li onClick={() => handleSortItem(1)}>
+            <a>Rating</a>
           </li>
-          <li>
-            <a>Item 2</a>
+          <li onClick={() => handleSortItem(2)}>
+            <a>Number of Pages</a>
+          </li>
+          <li onClick={() => handleSortItem(3)}>
+            <a>Published Year</a>
           </li>
         </ul>
       </div>
