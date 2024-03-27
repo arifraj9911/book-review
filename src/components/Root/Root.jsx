@@ -5,7 +5,7 @@ import './Root.css';
 
 const Root = () => {
     return (
-        <div className="max-w-screen-xl mx-auto">
+        <div className="mx-2 lg:max-w-screen-xl lg:mx-auto">
             <Header></Header>
             <Outlet></Outlet>
         </div>
