@@ -37,7 +37,7 @@ const PagesToRead = () => {
     }
   }, []);
 
-  console.log(readBookList);
+  // console.log(readBookList);
   return (
     <BarChart
       className="mx-auto"

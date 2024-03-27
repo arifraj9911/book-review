@@ -49,7 +49,7 @@ const ListedBooks = () => {
   };
   return (
     <div>
-      <h2 className="text-[28px] bg-[#1313130D] p-8 text-center">Books</h2>
+      <h2 className="text-[28px] bg-[#1313130D] p-8 text-center rounded-2xl font-bold">Books</h2>
       <div className="dropdown dropdown-bottom flex justify-center mt-8 ">
         <div
           tabIndex={0}
@@ -76,7 +76,7 @@ const ListedBooks = () => {
           </li>
         </ul>
       </div>
-      <div role="tablist" className="tabs tabs-lifted mt-24">
+      <div role="tablist" className="tabs tabs-lifted mt-24 ">
         <input
           type="radio"
           name="my_tabs_2"
@@ -87,7 +87,7 @@ const ListedBooks = () => {
         />
         <div
           role="tabpanel"
-          className="tab-content bg-base-100 border-base-300 rounded-box p-6"
+          className="tab-content bg-base-100 border-base-300  rounded-box p-6"
         >
           <div className="flex flex-col gap-6">
             {readBooks.map((book) => (

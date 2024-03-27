@@ -16,16 +16,16 @@ const WishListBooks = ({ book }) => {
     yearOfPublishing,
   } = book;
   return (
-    <div className="flex gap-6 items-center border-2 p-6 rounded-xl">
-      <div className="w-1/4 rounded-xl  bg-[#1313130D] py-7 px-10 flex justify-center items">
-        <img className="w-4/5 " src={image} alt="" />
+    <div className="flex flex-col lg:flex-row gap-6 items-center border-2 p-4 lg:p-6 rounded-xl">
+      <div className="w-full lg:w-1/4 rounded-xl  bg-[#1313130D] py-7 px-10 flex justify-center items-center">
+        <img className="lg:w-4/5 " src={image} alt="" />
       </div>
-      <div className="w-3/4">
+      <div className="lg:w-3/4">
         <h2 className="text-2xl font-bold mb-4">{bookName}</h2>
         <span className="text-[#131313CC] text-[16px] font-medium">
           By: {author}
         </span>
-        <div className="mt-6 mb-5 flex gap-4">
+        <div className="mt-6 mb-5 flex flex-col lg:flex-row gap-4">
           <span>
             <span className="font-bold text-[16px] mr-4">Tag</span>
             {tags.map((tag, idx) => (
@@ -47,7 +47,7 @@ const WishListBooks = ({ book }) => {
             </span>
           </span>
         </div>
-        <div className="text-[#13131399] font-normal text-[16px] flex gap-5">
+        <div className="text-[#13131399] font-normal flex-col lg:flex-row text-[16px] flex gap-5">
           <span className="flex items-center gap-2">
             {" "}
             <span>
@@ -64,7 +64,7 @@ const WishListBooks = ({ book }) => {
           </span>
         </div>
         <hr className="my-5" />
-        <div>
+        <div className="flex flex-col text-center lg:flex-row gap-4 lg:gap-2">
           <span className="mr-4 bg-[#328EFF26] px-4 py-2 text-[#328EFF] rounded-[30px]">
             Category: {category}
           </span>
