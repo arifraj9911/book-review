@@ -29,8 +29,8 @@ const ListedBooks = () => {
     }
   }, []);
 
-  const handleSortItem = (target) => {
-    console.log(target);
+  const handleSortReadItem = (target) => {
+    // console.log(target);
     if (target === 1) {
       setSortName("Rating");
       const result = [...readBooks].sort((a, b) => b.rating - a.rating);
@@ -47,9 +47,31 @@ const ListedBooks = () => {
       setReadBooks(result);
     }
   };
+
+  const handleShortWishlistItem = (target) => {
+    if (target === 1) {
+      setSortName("Rating");
+      const result = [...wishlistBooks].sort((a, b) => b.rating - a.rating);
+      setWishlistBooks(result);
+    } else if (target === 2) {
+      setSortName("Number of Pages");
+      const result = [...wishlistBooks].sort(
+        (a, b) => b.totalPages - a.totalPages
+      );
+      setWishlistBooks(result);
+    } else if (target === 3) {
+      setSortName("Published Year");
+      const result = [...wishlistBooks].sort(
+        (a, b) => b.yearOfPublishing - a.yearOfPublishing
+      );
+      setWishlistBooks(result);
+    }
+  };
   return (
     <div>
-      <h2 className="text-[28px] bg-[#1313130D] p-8 text-center rounded-2xl font-bold">Books</h2>
+      <h2 className="text-[28px] bg-[#1313130D] p-8 text-center rounded-2xl font-bold">
+        Books
+      </h2>
       <div className="dropdown dropdown-bottom flex justify-center mt-8 ">
         <div
           tabIndex={0}
@@ -65,13 +87,28 @@ const ListedBooks = () => {
           tabIndex={0}
           className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
         >
-          <li onClick={() => handleSortItem(1)}>
+          <li
+            onClick={() => {
+              handleSortReadItem(1);
+              handleShortWishlistItem(1);
+            }}
+          >
             <a>Rating</a>
           </li>
-          <li onClick={() => handleSortItem(2)}>
+          <li
+            onClick={() => {
+              handleSortReadItem(2);
+              handleShortWishlistItem(2);
+            }}
+          >
             <a>Number of Pages</a>
           </li>
-          <li onClick={() => handleSortItem(3)}>
+          <li
+            onClick={() => {
+              handleSortReadItem(3);
+              handleShortWishlistItem(3);
+            }}
+          >
             <a>Published Year</a>
           </li>
         </ul>
@@ -83,7 +120,6 @@ const ListedBooks = () => {
           role="tab"
           className="tab"
           aria-label="Read Books"
-          checked
         />
         <div
           role="tabpanel"

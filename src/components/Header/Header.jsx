@@ -16,6 +16,9 @@ const Header = () => {
       <li className="text-sm lg:text-lg font-normal text-[#131313CC]">
         <NavLink to="/blogs">Blogs</NavLink>
       </li>
+      <li className="text-sm lg:text-lg font-normal text-[#131313CC]">
+        <NavLink to="/contact">Contact Us</NavLink>
+      </li>
     </>
   );
   return (
